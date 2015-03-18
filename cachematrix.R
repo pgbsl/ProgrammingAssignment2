@@ -7,20 +7,24 @@
 ########################################################
 
 makeCacheMatrix <- function(mtx = matrix()) {
+  
+  # Default the invertedMtx to NULL
   invertedMtx <- NULL
-  print(invertedMtx)
-  set <- function(y) {
-    mtx <<- y
+
+  # Set a new matrix (NULLing out the inverted matrix)
+  set <- function(newMatrix) {
+    mtx <<- newMatrix
     invertedMtx <<- NULL
-    message("In set")
+    message("New matrix set")
   }
   get <- function() {
-    message("In get")
-    print(mtx)
     mtx
   }
   
+  # Add the inverted matri the cache
   setInvertedMatrix <- function(invMtx) invertedMtx <<- invMtx
+  
+  # Retrieve the inverted matrix
   getInvertedMatrix <- function() invertedMtx
   list(set = set, get = get,
        setInvertedMatrix = setInvertedMatrix,
